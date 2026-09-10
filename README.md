@@ -52,6 +52,27 @@ The filename determines the stable URL: `september-meetup.md` becomes
 The generator refuses to overwrite files. Delete a Markdown file to remove a
 page on the next deployment.
 
+### Short links
+
+Add optional aliases to a page's front matter:
+
+```yaml
+aliases:
+  - /sep-2026
+  - /september
+```
+
+After deployment, `https://djub.frkl.dev/sep-2026` redirects to the September
+event's primary URL. The homepage lists the event only once. Aliases use a
+small HTML redirect with a clickable fallback; no browser JavaScript is needed.
+GitHub Pages adds a trailing slash to these directory URLs.
+
+Use root paths with lowercase letters, numbers, and hyphens. The trailing slash
+is optional. Duplicate aliases and collisions with page URLs or the reserved
+`/assets/` and `/events/` directories fail the build. Include no domain or
+`/djub/` prefix: the build adds the deployment prefix to redirect targets.
+Removing an alias removes its redirect on the next clean build and deployment.
+
 Two starter pages demonstrate the layout with and without a QR code. Edit or
 remove them before publishing your own events.
 

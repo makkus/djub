@@ -12,6 +12,12 @@ for (const file of pages) {
   assert(/<h1[ >]/.test(html), `${file}: missing heading`);
   assert(!/<script[ >]/.test(html), `${file}: unexpected browser JavaScript`);
   assert(!/\{%|\{\{/.test(html), `${file}: unrendered template`);
+  const redirect = html.match(/http-equiv="refresh" content="0; url=([^"]+)"/);
+  if (redirect) {
+    assert(html.includes(`rel="canonical" href="${redirect[1]}"`), `${file}: redirect and canonical disagree`);
+    assert(html.includes(`<a href="${redirect[1]}">`), `${file}: missing redirect fallback link`);
+    assert.notEqual(redirect[1], prefix + file.replace(/index\.html$/, ""), `${file}: redirect loop`);
+  }
   for (const [, url] of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     if (!url.startsWith("/")) continue;
     assert(url.startsWith(prefix), `${file}: URL outside path prefix: ${url}`);

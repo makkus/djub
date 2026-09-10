@@ -12,3 +12,6 @@ A page with a short description of a djub event, intended primarily for display 
 
 **QR destination**:
 The link attendees open by scanning an event page's optional QR code.
+
+**Page alias**:
+A short alternative address for an existing page, leading visitors to that page's primary address.

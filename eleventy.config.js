@@ -27,6 +27,29 @@ export default function (eleventyConfig) {
       a.data.title.localeCompare(b.data.title, "en"),
     ),
   );
+  eleventyConfig.addCollection("aliases", (api) => {
+    const pages = api.getAll();
+    const occupied = new Set(pages.map((page) => page.url));
+    const aliases = [];
+    for (const page of pages) {
+      if (page.data.aliases === undefined) continue;
+      if (!Array.isArray(page.data.aliases)) {
+        throw new Error(`${page.inputPath}: aliases must be a list of paths.`);
+      }
+      for (const alias of page.data.aliases) {
+        if (typeof alias !== "string" || !/^\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(alias)) {
+          throw new Error(`${page.inputPath}: invalid alias ${alias}; use a root path such as /sep-2026.`);
+        }
+        const path = alias.replace(/\/?$/, "/");
+        if (["/assets/", "/events/"].includes(path) || occupied.has(path)) {
+          throw new Error(`${page.inputPath}: alias ${path} conflicts with an existing page or alias.`);
+        }
+        occupied.add(path);
+        aliases.push({ path, target: page.url, title: page.data.title });
+      }
+    }
+    return aliases;
+  });
   return {
     dir: { input: "src", output: "_site", includes: "_includes" },
     pathPrefix: process.env.PATH_PREFIX || "/",

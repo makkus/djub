@@ -1,5 +1,7 @@
 ---
 title: "September meetup"
+aliases:
+  - /sep-2026
 event_date: "2026-09-17"
 venue: "Kraken · Saarbrücker Str. 36, Berlin · Top floor"
 qr_url: "https://luma.com/ien3pic1"

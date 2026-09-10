@@ -8,6 +8,8 @@ if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || !title?.trim() || extra
 const path = new URL(`../src/events/${slug}.md`, import.meta.url);
 const content = `---
 title: ${JSON.stringify(title)}
+# aliases:
+#   - /my-short-link
 # event_date: "2026-09-24"
 # venue: "Venue name, Berlin"
 # qr_url: "https://example.org/registration"
