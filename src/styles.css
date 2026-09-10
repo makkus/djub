@@ -1,0 +1,39 @@
+:root {
+  color-scheme: light;
+  --paper: #f5f7ed;
+  --green: #195540;
+  --leaf: #8fbc87;
+  --ink: #163b2e;
+  --white: #ffffff;
+  font-family: "Trebuchet MS", "Avenir Next", Avenir, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: var(--green); text-underline-offset: .2em; }
+a:focus-visible { outline: 4px solid var(--green); outline-offset: 6px; }
+.page { min-height: 100svh; padding: clamp(1.5rem, 4vw, 5rem); max-width: 120rem; margin-inline: auto; }
+.brand img { display: block; width: clamp(6rem, 10vw, 10rem); height: auto; }
+h1 { font-size: clamp(2.5rem, 5vw, 6.5rem); line-height: 1.08; letter-spacing: -.04em; margin: 0 0 .5em; text-wrap: balance; overflow-wrap: anywhere; }
+.event { display: grid; align-items: center; gap: clamp(2rem, 5vw, 6rem); padding-block: clamp(2rem, 4vh, 4rem); }
+.event--with-qr { grid-template-columns: minmax(0, 1.5fr) minmax(16rem, 1fr); }
+.event-copy { max-width: 70rem; }
+.description, .intro { font-size: clamp(1.25rem, 2.2vw, 2.6rem); line-height: 1.5; max-width: 48ch; overflow-wrap: anywhere; }
+.description > :last-child { margin-bottom: 0; }
+.description img { max-width: 100%; height: auto; }
+.event-details { font-size: clamp(1.1rem, 1.7vw, 2rem); line-height: 1.4; }
+.event-details p { margin: .2em 0; }
+.qr-panel { width: 100%; max-width: 32rem; justify-self: center; text-align: center; }
+.qr-link { display: block; background: var(--white); }
+.qr-link svg { display: block; width: 100%; height: auto; }
+.qr-label { display: inline-block; margin-top: 1rem; font-size: clamp(1.1rem, 1.6vw, 1.9rem); line-height: 1.4; overflow-wrap: anywhere; }
+.index { padding-top: 3rem; max-width: 75rem; }
+.event-list { padding: 0; list-style: none; margin-top: 3rem; }
+.event-list li { border-top: 2px solid var(--leaf); padding-block: 1.25rem; }
+.event-list a { font-size: clamp(1.4rem, 2.4vw, 2.5rem); }
+.event-list span { display: block; margin-top: .6rem; font-size: 1.1rem; }
+@media (max-width: 48rem) {
+  .event--with-qr { grid-template-columns: 1fr; }
+  .qr-panel { max-width: 22rem; }
+}

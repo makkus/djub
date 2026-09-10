@@ -1,0 +1,16 @@
+---
+layout: base.njk
+title: "Django Users Berlin"
+---
+<section class="index">
+  <h1>Django Users Berlin</h1>
+  <p class="intro">Meetups, talks, and conversations about Django.</p>
+  <ul class="event-list">
+    {% for event in collections.events %}
+    <li>
+      <a href="{{ event.url | url }}">{{ event.data.title }}</a>
+      {% if event.data.event_date %}<span>{{ event.data.event_date | eventDate }}</span>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>

@@ -1,0 +1,23 @@
+---
+layout: base.njk
+---
+<article class="event{% if qr_url %} event--with-qr{% endif %}">
+  <div class="event-copy">
+    <h1>{{ title }}</h1>
+    {% if event_date or venue %}
+    <div class="event-details">
+      {% if event_date %}<p><time datetime="{{ event_date }}">{{ event_date | eventDate }}</time></p>{% endif %}
+      {% if venue %}<p>{{ venue }}</p>{% endif %}
+    </div>
+    {% endif %}
+    <div class="description">{{ content | safe }}</div>
+  </div>
+  {% if qr_url %}
+  <aside class="qr-panel" aria-label="Event link">
+    <a class="qr-link" href="{{ qr_url }}" aria-label="{{ qr_label or 'Open event link' }}">
+      {% qr qr_url %}
+    </a>
+    <a class="qr-label" href="{{ qr_url }}">{{ qr_label or 'Open event link' }}</a>
+  </aside>
+  {% endif %}
+</article>

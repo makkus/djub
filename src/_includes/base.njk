@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} · djub</title>
+    <link rel="stylesheet" href="{{ '/styles.css' | url }}">
+  </head>
+  <body>
+    <main class="page">
+      <header class="brand">
+        <img src="{{ '/assets/logo/logo_djub_transparent.png' | url }}" alt="Django Users Berlin" width="1024" height="1024">
+      </header>
+      {{ content | safe }}
+    </main>
+  </body>
+</html>

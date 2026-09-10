@@ -1,0 +1,17 @@
+{
+  "name": "djub",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "node scripts/clean.mjs && eleventy",
+    "check": "npm run build && node scripts/check.mjs",
+    "new": "node scripts/new.mjs",
+    "clean": "node scripts/clean.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "qrcode": "^1.5.4"
+  }
+}
